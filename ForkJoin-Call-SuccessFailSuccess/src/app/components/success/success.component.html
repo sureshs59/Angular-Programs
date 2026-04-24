@@ -1,0 +1,33 @@
+<p>success works!</p>
+
+    <div class="col-4">
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>NAME</th>
+          <th>USERNAME</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Website</th>
+        </tr>
+        
+          @for (user of myUsers; track $index){
+            <tr>
+              <td>{{myUsers[$index].id}}</td>
+              <td>{{myUsers[$index].name}}</td>
+              <td>{{myUsers[$index].username}}</td>
+              <td>{{myUsers[$index].email}}</td>
+              <td>{{myUsers[$index].phone}}</td>
+              <td>{{myUsers[$index].website}}</td>
+            </tr>
+          } @empty {
+            <tr>
+              <div class="col-4">
+                  No data returns..!
+              </div>
+            </tr>
+          }
+        
+        </table>
+    </div>
+  
