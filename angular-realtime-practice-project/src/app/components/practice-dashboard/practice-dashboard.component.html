@@ -1,0 +1,76 @@
+<div class="container">
+  <h1>Angular Real-Time Practice Dashboard</h1>
+
+  <section class="card">
+    <h2>1. Parallel and Sequential API Calls</h2>
+    <button (click)="loadParallelWithObservable()">Parallel: forkJoin</button>
+    <button (click)="loadSequentialWithObservable()">Sequential: switchMap</button>
+    <button (click)="loadSequentialWithPromise()">Sequential: Promise</button>
+    <button (click)="runMergeMapExample()">mergeMap Example</button>
+
+    <div class="grid">
+      <div>
+        <h3>User</h3>
+        <pre>{{ user | json }}</pre>
+      </div>
+      <div>
+        <h3>Orders</h3>
+        <pre>{{ orders | json }}</pre>
+      </div>
+      <div>
+        <h3>Profile</h3>
+        <pre>{{ profile | json }}</pre>
+      </div>
+    </div>
+    <p>{{ promiseResult }}</p>
+  </section>
+
+  <section class="card">
+    <h2>2. Search Performance: combineLatest + debounceTime + distinctUntilChanged + switchMap</h2>
+    <input [formControl]="searchControl" placeholder="Search products" />
+    <select [formControl]="categoryControl">
+      <option>All</option>
+      <option>Books</option>
+      <option>Electronics</option>
+    </select>
+
+    <div *ngIf="products$ | async as products">
+      <p>Products found: {{ products.length }}</p>
+      <ul>
+        <li *ngFor="let product of products; trackBy: trackByProductId">
+          {{ product.name }} - {{ product.price | currency }} - Discounted: {{ product.price | discount:10 | currency }}
+          <button (click)="addProductToCart(product)">Add to Cart</button>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>3. trackBy Example</h2>
+    <ul>
+      <li *ngFor="let user of usersForTrackBy; trackBy: trackByUserId">
+        {{ user.id }} - {{ user.name }} - {{ user.email }}
+      </li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>4. Async Pipe + shareReplay API Cache</h2>
+    <div *ngIf="cachedUser$ | async as cachedUser">
+      Cached User: {{ cachedUser.name }} - {{ cachedUser.email }}
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>5. State Management with BehaviorSubject</h2>
+    <button (click)="clearCart()">Clear Cart</button>
+    <div *ngIf="cartItems$ | async as cartItems">
+      <p>Cart Count: {{ cartItems.length }}</p>
+      <ul>
+        <li *ngFor="let item of cartItems">
+          {{ item.name }} - {{ item.price | currency }}
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
