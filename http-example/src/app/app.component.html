@@ -1,0 +1,29 @@
+<h2>Angular 18 HTTP GET Example</h2>
+
+<button (click)="loadUsers()">Reload Users</button>
+
+<p *ngIf="loading">Loading users...</p>
+
+<p *ngIf="errorMessage" style="color: red;">
+  {{ errorMessage }}
+</p>
+
+<table border="1" cellpadding="8" *ngIf="users.length > 0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.phone }}</td>
+    </tr>
+  </tbody>
+</table>
