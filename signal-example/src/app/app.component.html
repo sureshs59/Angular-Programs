@@ -1,0 +1,11 @@
+<h2>Shopping Cart</h2>
+
+<!-- signal() — call it like a function to read the value -->
+ <p>{{ itemCount() }}</p>
+ <p>{{ totalPrice() }}</p>
+ <p>{{ cartItems() }}</p>
+
+ <button (click)="addItem(10)">Add Item</button>
+ <button (click)="deleteItem(10)">Delete Item</button>
+ <button (click)="reset()">Clear Cart</button>
+

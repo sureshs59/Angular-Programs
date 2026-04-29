@@ -33,6 +33,9 @@ export class AppComponent implements OnInit {
       error: (error) => {
         this.errorMessage = 'Error fetching users';
         this.loading = false;
+      },
+      complete: () => {
+        console.log('User fetching completed');
       }
     });
   }

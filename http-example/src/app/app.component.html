@@ -2,28 +2,54 @@
 
 <button (click)="loadUsers()">Reload Users</button>
 
-<p *ngIf="loading">Loading users...</p>
+@if (loading){
+  <p>Loading users...</p>
+}
 
-<p *ngIf="errorMessage" style="color: red;">
-  {{ errorMessage }}
-</p>
+@if(errorMessage){
+  <p style="color: red;">{{ errorMessage }}</p>
+}
+
 
 <table border="1" cellpadding="8" *ngIf="users.length > 0">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Phone</th>
+      <th colspan="4">ID</th>
+      <th colspan="4">Name</th>
+      <th colspan="4">Email</th>
+      <th colspan="4">Phone</th>
     </tr>
   </thead>
 
   <tbody>
-    <tr *ngFor="let user of users">
+    @for(user of users; track user.id){
+      <!--Why track matters: track expense.id tells Angular which item is which 
+      when the list updates. 
+      Without it, Angular would destroy and rebuild all DOM nodes on every change 
+      — extremely slow for large lists. -->
+      <tr>
+        <td colspan="4">{{ user.id }}</td>
+        <td colspan="4">{{ user.name }}</td>
+        <td colspan="4">{{ user.email }}</td>
+        <td colspan="4">{{ user.phone }}</td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="4">No users found.</td>
+      </tr>
+    }
+    <!-- <tr *ngFor="let user of users">
       <td>{{ user.id }}</td>
       <td>{{ user.name }}</td>
       <td>{{ user.email }}</td>
       <td>{{ user.phone }}</td>
-    </tr>
+    </tr> -->
+  
+    @switch (users.length > 0) 
+    {
+      @case (true) { <span class="green">Loaded the data</span> }
+      @case (false) { <span class="red">Failed to load data</span> }
+      @default {<span>UNKNOWN</span>}
+    }
   </tbody>
 </table>
