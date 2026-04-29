@@ -1,0 +1,8 @@
+<h2>Expense Tracker</h2>
+
+@for (exp of expense; track exp.id) {
+      <app-expense-item
+        [expense]="exp"
+        (deleted)="removeExpense($event)"
+      />
+    }
