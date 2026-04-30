@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-12 text-center">
+        <div class="btn-group">
+            
+            <button class="btn" [ngClass]="currentComponent ==  'Roles' ? 'btn-success' : 'btn-primary'" type="button" (click)="changeTab('Roles')">Roles</button>
+            <button class="btn btn-primary" [ngClass]="currentComponent ==  'Designation' ? 'btn-success' : 'btn-primary'"
+             type="button" (click)="changeTab('Designation')">Designation</button>
+        </div>  
+    </div>
+</div>
+<div class="row pt-3">
+    @if (currentComponent ==  'Roles') {
+        <div class="col-12" >
+            <app-roles />
+        </div>
+    }
+    @if (currentComponent == 'Designation') {
+        <div class="col-12">
+            <app-designation /> 
+        </div>
+    }
+</div>
+
+
+
+
+
+

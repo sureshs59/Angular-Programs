@@ -1,0 +1,55 @@
+<h1>Objects from API</h1>
+
+@if (loading) {
+  <p  class="loading">Loading...</p>
+} 
+  <ul class="objects-list">
+    @for (obj of objects; track trackById) {
+      <li class="object-item">
+        <strong>ID:</strong> {{ obj.id }} |
+        <strong>Name:</strong> {{ obj.name }} |
+        <strong>Data:</strong>
+        <ul>
+          @if (obj.data !== null && obj.data.color) {
+            <li>Color: {{ obj.data.color }}</li>
+          }
+          @if (obj.data !== null && obj.data.capacity) {
+            <li>Capacity: {{ obj.data.capacity }}</li>
+          }
+          @if (obj.data !== null && obj.data['CPU model']) {
+            <li>CPU model: {{ obj.data['CPU model'] }}</li>
+          }
+          @if (obj.data !== null && obj.data['Hard disk size']) {
+            <li>Hard disk size: {{ obj.data['Hard disk size'] }}</li>
+          }
+          @if (obj.data !== null && obj.data.year) {
+            <li>Year: {{ obj.data.year }}</li>
+          }
+          @if (obj.data !== null && obj.data.price) {
+            <li>Price: {{ obj.data.price }}</li>
+          }
+            @if (obj.data !== null && obj.data.Description) {
+                <li>Description: {{ obj.data.Description }}</li>
+            }
+            @if (obj.data !== null && obj.data['Screen size']) {
+                <li>Screen size: {{ obj.data['Screen size'] }}</li>
+            }
+            @if (obj.data !== null && obj.data.Generation) {
+                <li>Generation: {{ obj.data.Generation }}</li>
+            }
+            @if (obj.data !== null && obj.data['Strap Colour']) {
+                <li>Strap Colour: {{ obj.data['Strap Colour'] }}</li>
+            }
+            @if (obj.data !== null && obj.data['Case Size']) {
+                <li>Case Size: {{ obj.data['Case Size'] }}</li>
+            }
+
+        </ul>
+      </li>
+    }
+    </ul>
+    
+
+    @if (objects.length === 0) {
+      <p  class="error">No objects found.</p>
+    }

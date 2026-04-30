@@ -1,0 +1,59 @@
+<div class="row">
+    @if( loader == true) {
+        <div class="spinner-border text-muted"></div>
+        <div class="spinner-border text-primary"></div>
+        <div class="spinner-border text-success"></div>
+        <div class="spinner-border text-info"></div>
+        <div class="spinner-border text-warning"></div>
+        <div class="spinner-border text-danger"></div>
+        <div class="spinner-border text-secondary"></div>
+        <div class="spinner-border text-dark"></div>
+        <div class="spinner-border text-light"></div>
+    } @else {
+        @for (user of addressDetails; track $index){
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                    <h4 class="card-title">Address</h4>
+                    <p class="card-text">{{user.address.street}} {{user.address.suite}}, {{user.address.city}} -{{user.address.zipcode}} </p>
+                    <a href="#" class="card-link">Edit</a>
+                    <a href="#" class="card-link">Delete</a>
+                    </div>
+                </div>
+            </div>   
+        }
+    }
+</div>
+  
+
+
+<!-- <div class="row">
+    <div class="col-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Street
+                    </th>
+                    <th>
+                        Suite
+                    </th>
+                    <th>
+                        City
+                    </th>
+                    <th>
+                        Zipcode 
+                    </th>
+                </tr>
+            </thead>
+            <tbody>  
+                <tr *ngFor="let user of addressDetails; let idx = index" >
+                    <td>{{user.address.street}}</td>    
+                    <td>{{user.address.suite}}</td>    
+                    <td>{{user.address.city}}</td>    
+                    <td>{{user.address.zipcode}}</td>    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->
