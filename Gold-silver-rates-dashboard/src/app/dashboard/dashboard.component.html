@@ -1,0 +1,75 @@
+<div class="dashboard-container">
+
+  <h1>Gold & Silver Daily Rates</h1>
+  <p class="subtitle">Daily precious metal rate dashboard</p>
+
+  <button (click)="loadDashboard()">Refresh Rates</button>
+
+  <p *ngIf="loading">Loading rate data...</p>
+
+  <p *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </p>
+
+  <div class="cards">
+    <div class="rate-card" *ngFor="let rate of rates">
+      <h2>{{ rate.metal }}</h2>
+
+      <p class="price">
+        ₹{{ rate.todayRate }} / {{ rate.unit }}
+      </p>
+
+      <p>
+        Yesterday: ₹{{ rate.yesterdayRate }}
+      </p>
+
+      <p [class.positive]="rate.change > 0"
+         [class.negative]="rate.change < 0">
+        Change:
+        {{ rate.change > 0 ? '+' : '' }}{{ rate.change }}
+        ({{ rate.changePercent }}%)
+      </p>
+    </div>
+  </div>
+
+  <div class="chart-section">
+    <h2>Gold Price Trend - Last 7 Days</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Gold Price</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of goldHistory">
+          <td>{{ item.date }}</td>
+          <td>₹{{ item.price }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-section">
+    <h2>Silver Price Trend - Last 7 Days</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Silver Price</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of silverHistory">
+          <td>{{ item.date }}</td>
+          <td>₹{{ item.price }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
