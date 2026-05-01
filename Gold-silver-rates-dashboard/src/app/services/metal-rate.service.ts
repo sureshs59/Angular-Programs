@@ -16,6 +16,16 @@ export interface RateHistory {
   price: number;
 }
 
+export interface PredictionResponse {
+  metal: string;
+  latestPrice: number;
+  predictedPrice: number;
+  trend: string;
+  changePercent: number;
+  confidence: number;
+  model: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -35,5 +45,13 @@ export class MetalRateService {
 
   getSilverHistory(): Observable<RateHistory[]> {
     return this.http.get<RateHistory[]>(`${this.baseUrl}/history/silver`);
+  }
+
+  getGoldPrediction(): Observable<PredictionResponse> {
+  return this.http.get<PredictionResponse>(`${this.baseUrl}/prediction/Gold`);
+}
+
+  getSilverPrediction(): Observable<PredictionResponse> {
+    return this.http.get<PredictionResponse>(`${this.baseUrl}/prediction/Silver`);
   }
 }

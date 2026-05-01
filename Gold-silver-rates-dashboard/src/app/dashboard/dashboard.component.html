@@ -3,9 +3,11 @@
   <h1>Gold & Silver Daily Rates</h1>
   <p class="subtitle">Daily precious metal rate dashboard</p>
 
-  <button (click)="loadDashboard()">Refresh Rates</button>
+  <div class="action-row">
+    <button (click)="loadDashboard()">Refresh Rates</button>
+  </div>
 
-  <p *ngIf="loading">Loading rate data...</p>
+  <p *ngIf="loading" class="loading">Loading rate data...</p>
 
   <p *ngIf="errorMessage" class="error">
     {{ errorMessage }}
@@ -32,44 +34,66 @@
     </div>
   </div>
 
-  <div class="chart-section">
-    <h2>Gold Price Trend - Last 7 Days</h2>
+  <div class="prediction-section">
 
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Gold Price</th>
-        </tr>
-      </thead>
+  <div class="prediction-card" *ngIf="goldPrediction">
+    <h2>Gold AI Prediction</h2>
 
-      <tbody>
-        <tr *ngFor="let item of goldHistory">
-          <td>{{ item.date }}</td>
-          <td>₹{{ item.price }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>Latest Price: ₹{{ goldPrediction.latestPrice }}</p>
+    <p>Predicted Price: ₹{{ goldPrediction.predictedPrice }}</p>
+
+    <p [class.positive]="goldPrediction.trend === 'UP'"
+       [class.negative]="goldPrediction.trend === 'DOWN'">
+      Trend: {{ goldPrediction.trend }}
+    </p>
+
+    <p>Confidence: {{ goldPrediction.confidence }}%</p>
+    <p>Model: {{ goldPrediction.model }}</p>
   </div>
 
-  <div class="chart-section">
-    <h2>Silver Price Trend - Last 7 Days</h2>
+  <div class="prediction-card" *ngIf="silverPrediction">
+    <h2>Silver AI Prediction</h2>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Silver Price</th>
-        </tr>
-      </thead>
+    <p>Latest Price: ₹{{ silverPrediction.latestPrice }}</p>
+    <p>Predicted Price: ₹{{ silverPrediction.predictedPrice }}</p>
 
-      <tbody>
-        <tr *ngFor="let item of silverHistory">
-          <td>{{ item.date }}</td>
-          <td>₹{{ item.price }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <p [class.positive]="silverPrediction.trend === 'UP'"
+       [class.negative]="silverPrediction.trend === 'DOWN'">
+      Trend: {{ silverPrediction.trend }}
+    </p>
+
+    <p>Confidence: {{ silverPrediction.confidence }}%</p>
+    <p>Model: {{ silverPrediction.model }}</p>
   </div>
 
 </div>
+
+  <div class="charts-grid">
+
+    <div class="chart-card">
+      <h2>Gold Price Trend - Last 7 Days</h2>
+
+      <canvas
+        baseChart
+        [data]="goldChartData"
+        [options]="chartOptions"
+        [type]="'line'">
+      </canvas>
+    </div>
+
+    <div class="chart-card">
+      <h2>Silver Price Trend - Last 7 Days</h2>
+
+      <canvas
+        baseChart
+        [data]="silverChartData"
+        [options]="chartOptions"
+        [type]="'line'">
+      </canvas>
+    </div>
+
+  </div>
+
+</div>
+
+
