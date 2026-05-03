@@ -24,6 +24,8 @@ export interface PredictionResponse {
   changePercent: number;
   confidence: number;
   model: string;
+  featuresUsed?: string[];
+  error?: string;
 }
 
 @Injectable({

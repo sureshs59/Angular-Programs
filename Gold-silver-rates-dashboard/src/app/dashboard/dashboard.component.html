@@ -49,6 +49,14 @@
 
     <p>Confidence: {{ goldPrediction.confidence }}%</p>
     <p>Model: {{ goldPrediction.model }}</p>
+
+    <p *ngIf="goldPrediction.featuresUsed">
+      Features:
+      {{ goldPrediction.featuresUsed.join(', ') }}
+    </p>
+    <p *ngIf="goldPrediction?.error" class="error">
+      {{ goldPrediction.error }}
+    </p>
   </div>
 
   <div class="prediction-card" *ngIf="silverPrediction">
@@ -64,7 +72,17 @@
 
     <p>Confidence: {{ silverPrediction.confidence }}%</p>
     <p>Model: {{ silverPrediction.model }}</p>
+
+    <p *ngIf="silverPrediction.featuresUsed">
+      Features:
+      {{ silverPrediction.featuresUsed.join(', ') }}
+    </p>
+    <p *ngIf="silverPrediction?.error" class="error">
+      {{ silverPrediction.error }}
+    </p>
+    
   </div>
+  
 
 </div>
 
