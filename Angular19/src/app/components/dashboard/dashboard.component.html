@@ -5,7 +5,7 @@
     <div class="card text-white bg-primary mb-3">
       <div class="card-header">Users</div>
       <div class="card-body">
-        <h5 class="card-title">{{ userCount }}</h5>
+        <h5 class="card-title">{{ userCount$ | async }}</h5>
         <p class="card-text">Total registered users.</p>
       </div>
     </div>
@@ -14,7 +14,7 @@
     <div class="card text-white bg-success mb-3">
       <div class="card-header">Orders</div>
       <div class="card-body">
-        <h5 class="card-title">{{ ordersCount }}</h5>
+        <h5 class="card-title">{{ ordersCount$ | async }}</h5>
         <p class="card-text">Total orders placed.</p>
 
    <div>
