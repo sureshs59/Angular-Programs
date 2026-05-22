@@ -1,0 +1,32 @@
+<p>employee works HERE Suresh!</p>
+
+<!-- 
+    <input [(ngModel)]="firstName" placeholder="Prénom" />
+    <input [(ngModel)]="lastName" placeholder="Nom" />
+    <p>Nom complet : {{ firstName }} {{ lastName }}</p> -->
+
+
+<!-- 
+    <ng-container *ngIf="userSuresh | async as user; else loading">
+        <h3>{{ user.name }}</h3>
+        <p>{{ user.email }}</p>
+      </ng-container>
+      <ng-template #loading>Chargement...</ng-template> -->
+      <p> USER PROFILE..... </p>
+      @for ( user of forkDetail1; track $index ){
+          <div class="col-4">
+            {{$index}}--- {{user.username}}---{{user.email}}
+          </div>
+      }
+
+      <p>-------------POSTS------------</p>
+      @for (pods of forkDetail2; track $index){
+          <div class="col-4">
+             {{$index}}--- {{pods.userId}}---{{pods.title}}
+          </div>
+      }  @empty {
+          <div class="col-4">
+              No information found..!
+          </div>
+      }
+
