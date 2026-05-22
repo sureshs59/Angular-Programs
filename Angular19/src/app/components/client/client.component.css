@@ -1,0 +1,4 @@
+.loading { color: #666; }
+      .objects-list { list-style: none; padding: 0; }
+      .object-item { border: 1px solid #ddd; margin: 8px 0; padding: 12px; }
+      .error { color: red; }
