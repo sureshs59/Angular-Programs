@@ -1,26 +1,38 @@
 import { Component } from '@angular/core';
 import { ChildComponent } from "../child/child.component";
 import { FormsModule} from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-parent',
   standalone: true,
-  imports: [ChildComponent, FormsModule],
+  imports: [ChildComponent, FormsModule,CommonModule],
   templateUrl: './parent.component.html',
   styleUrl: './parent.component.css'
 })
 export class ParentComponent {
- messages: string[] = [];
 
-  receiveMessage(message: string) {
+  // Message sent to child
+  parentMessage = '';
 
-    // User message
-    this.messages.push("User: " + message);
+  // Messages display
+  chatHistory: string[] = [];
 
-    // Bot response
-    const botReply =
-      "Bot: You said -> " + message;
+  sendToChild() { 
+    if(this.parentMessage.trim()) {
+      this.chatHistory.push(
+        'Parent: ' + this.parentMessage
+      );
+    }
+  }
 
-    this.messages.push(botReply);
+   // Receive from child
+  receiveFromChild(message: string) {
+    //alert('receiveFromChild..' + message);
+    this.chatHistory.push(
+      'Child: ' + message
+    );
+    //alert('chatHistory..' + this.chatHistory.length+"---"+this.chatHistory);
+    
   }
 }

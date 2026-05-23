@@ -1,23 +1,23 @@
-<div class="chat-box">
+<div>
 
-  <div
-    *ngFor="let msg of chatMessages">
+  <h2>Child Component</h2>
+  <p>
+    Message From Parent:
+  </p>
 
-    {{ msg }}
-
+  <div class="message-box">
+    {{ receivedMessage }}
   </div>
 
+  <br>
+
+  <input
+    type="text"
+    [(ngModel)]="childMessage"
+    placeholder="Reply to parent">
+
+  <button (click)="sendToParent()">
+    Reply To Parent
+  </button>
+
 </div>
-
-<input
-  type="text"
-
-  [(ngModel)]="userInput"
-
-  placeholder="Type message">
-
-<button (click)="sendMessage()">
-
-  Send
-
-</button>

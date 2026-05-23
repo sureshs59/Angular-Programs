@@ -1,9 +1,27 @@
-<h2>Angular Chat Bot</h2>
+<div class="container">
 
-<app-child
+  <h2>Parent Component</h2>
 
-  [chatMessages]="messages"
+  <input
+    type="text"
+    [(ngModel)]="parentMessage"
+    placeholder="Send message to child">
 
-  (messageEvent)="receiveMessage($event)">
+  <button (click)="sendToChild()">
+    Send To Child
+  </button>
 
-</app-child>
+  <hr>
+
+  <app-child
+    [messageFromParent]="parentMessage"
+    (messageEvent)="receiveFromChild($event)">
+  </app-child>
+
+  <hr>
+
+  <h3>Chat History</h3>
+  <div *ngFor="let msg of chatHistory">
+    {{ msg }}
+  </div>
+</div>

@@ -1,53 +1,21 @@
-#test {
-  border: 2px solid #007bff;
+.container {
+  width: 500px;
+  margin: auto;
   padding: 20px;
-  margin: 20px auto;
-  border-radius: 8px;
-  background-color: #f8f9fa;
-  max-width: 500px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-#test h3 {
-  color: #333;
-  margin-bottom: 15px;
+input {
+  width: 250px;
+  padding: 8px;
+  margin-right: 10px;
 }
 
-#test label {
-  display: block;
-  margin-bottom: 8px;
-  color: #555;
-  font-weight: 500;
+button {
+  padding: 8px 12px;
 }
 
-#test input {
-  width: 100%;
+.message-box {
+  background: #f1f1f1;
   padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-
-#test input:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-#test button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#test button:hover {
-  background-color: #0056b3;
+  border-radius: 5px;
 }
