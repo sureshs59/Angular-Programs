@@ -1,10 +1,10 @@
 import { Component , OnInit,OnChanges,DoCheck,OnDestroy, AfterContentChecked,
   AfterContentInit, AfterViewChecked, AfterViewInit, Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  SimpleChanges
 } from '@angular/core';
 import { FormsModule} from '@angular/forms';
-import { AppComponent } from '../../app.component';
 import { CommonModule } from '@angular/common';
 
 
@@ -18,34 +18,40 @@ import { CommonModule } from '@angular/common';
 })
 export class ChildComponent implements OnInit, OnChanges, DoCheck,
 OnDestroy ,AfterViewInit,AfterViewChecked,AfterContentInit,AfterContentChecked {
-   // Parent → Child
-  @Input()
-  chatMessages: string[] = [];
+  
+  // Parent → Child
+  @Input() messageFromParent = '';
 
   // Child → Parent
-  @Output()
-  messageEvent =
-    new EventEmitter<string>();
+  @Output() messageEvent = new EventEmitter<string>();
 
-  userInput = '';
+  childMessage = '';
 
-  sendMessage() {
+  receivedMessage = '';
 
-    if(this.userInput.trim()) {
+  ngOnChanges(changes: SimpleChanges): void {
 
-      // Emit to parent
-      this.messageEvent.emit(this.userInput);
+    if(changes['messageFromParent']) {
+      this.receivedMessage = this.messageFromParent;
+    }
+    //alert("on changes.."+this.receivedMessage);
+  }
 
-      this.userInput = '';
+   sendToParent() {
+    if(this.childMessage.trim()) {
+      this.messageEvent.emit(
+        this.childMessage
+      );
+      //alert(this.childMessage);// = '';
     }
   }
 
   constructor() {
     console.log('Child constructor called');
    }
-  ngOnChanges(): void {
-    console.log('Child ngOnChanges called');
-  }
+  // ngOnChanges(): void {
+  //   console.log('Child ngOnChanges called');
+  // }
   ngOnInit(): void {
     console.log('Child ngOnInit called');
   }
@@ -67,6 +73,4 @@ OnDestroy ,AfterViewInit,AfterViewChecked,AfterContentInit,AfterContentChecked {
   ngAfterViewChecked(): void {
     console.log('Child ngAfterViewChecked called');
   }
-
-
 }

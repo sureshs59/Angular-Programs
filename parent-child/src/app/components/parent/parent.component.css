@@ -1,0 +1,21 @@
+.container {
+  width: 500px;
+  margin: auto;
+  padding: 20px;
+}
+
+input {
+  width: 250px;
+  padding: 8px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 8px 12px;
+}
+
+.message-box {
+  background: #f1f1f1;
+  padding: 10px;
+  border-radius: 5px;
+}
