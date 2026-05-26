@@ -20,4 +20,27 @@
 
 <router-outlet /> -->
 
+<h4> Subscribe from RxJS</h4>
+
+ <div *ngFor="let item of items">
+     {{ item }}
+</div>
+
+<div>
+     <h4>Key Points</h4>
+     <ol>
+          <li>.subscribe() returns a Subscription object.</li>
+          <li>Unsubscribing is important to prevent memory leaks, especially for long-lived components (or observables that don't complete on their own).</li>
+          <li>For multiple subscriptions, manage them with a list or use takeUntil for better cleanup.</li>
+     </ol>
+<h4>Summary</h4>
+     <ol>
+          
+          <li>Subscription in Angular is an RxJS concept:</li>
+          <li>Subscribe to async data sources (HTTP, custom Observables, etc.).</li>
+          <li>Unsubscribe manually using the Subscription object, usually in ngOnDestroy.</li>
+     </ol>
+
+</div>
+
 <app-parent></app-parent>
